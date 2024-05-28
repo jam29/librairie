@@ -12,6 +12,11 @@ public class EcrivainService {
         List ecrivains = ecrivainDao.getEcrivains() ;
         return ecrivains ;
     }
+
+    public Ecrivain getEcrivain(int id) {
+        Ecrivain ecrivain = ecrivainDao.getEcrivain(id) ;
+        return ecrivain ;
+    }
     public void create(Ecrivain e) {
         ecrivainDao.create(e);
     }

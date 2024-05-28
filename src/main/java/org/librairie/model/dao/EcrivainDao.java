@@ -17,6 +17,15 @@ public class EcrivainDao {
         List<Ecrivain> ecrivains = query.getResultList();
         return ecrivains;
     }
+
+    public Ecrivain getEcrivain(int id) {
+        // je récupère la session Hibernate qui permet de persister les données.
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Query<Ecrivain> query = session.createQuery("from Ecrivain where id=:id",Ecrivain.class); // pamaetres nommés
+        query.setInteger("id", id);
+        Ecrivain ecrivain = query.getSingleResult();
+        return ecrivain;
+    }
     public void create(Ecrivain e) {
         Session session = null;
         Transaction tr = null;

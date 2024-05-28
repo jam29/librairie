@@ -14,5 +14,11 @@ public class EcrivainView {
             }
         }
     }
+    public void AfficheEcrivain(Ecrivain ecrivain) {
+        System.out.println(ecrivain.getNom()+" "+ecrivain.getPrenom());
+        for(Livre l: ecrivain.getLivres()) {
+            System.out.println(l.getTitre());
+        }
+    }
 }
 

@@ -13,6 +13,10 @@ public class EcrivainController {
         List<Ecrivain> ecrivains = ecrivainService.getEcrivains();
         ecrivainView.AfficheEcrivains(ecrivains);
     }
+    public void afficheEcrivain(int id) {
+        Ecrivain e = ecrivainService.getEcrivain(id);
+                ecrivainView.AfficheEcrivain(e);
+    }
     public void create(Ecrivain e) {
         System.out.println(e.getNom());
         ecrivainService.create(e);

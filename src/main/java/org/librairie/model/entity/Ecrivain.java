@@ -13,7 +13,12 @@ public class Ecrivain {
     private String nom;
     private String prenom;
 
-    @OneToMany(mappedBy = "ecrivain") // Ici ecrivain correspond à ecrivain qui est déclaré dans lentité Livre
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "ecrivain_livre",
+            joinColumns = { @JoinColumn(name = "id_ecrivain") },
+            inverseJoinColumns = { @JoinColumn(name = "id_livre") }
+    )
     private List<Livre> livres;
 
     public Ecrivain(){}
@@ -46,5 +51,7 @@ public class Ecrivain {
     public List<Livre> getLivres() {
         return this.livres;
     }
+
+
 
 }
