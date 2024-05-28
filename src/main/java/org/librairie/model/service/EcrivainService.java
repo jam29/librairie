@@ -2,6 +2,7 @@ package org.librairie.model.service;
 
 import org.librairie.model.dao.EcrivainDao;
 import org.librairie.model.entity.Ecrivain;
+import org.librairie.model.entity.Livre;
 
 import java.util.List;
 
@@ -14,6 +15,10 @@ public class EcrivainService {
     }
     public void create(Ecrivain e) {
         ecrivainDao.create(e);
+    }
+
+    public void addLivre(int id, Livre l) {
+        ecrivainDao.addLivre(id,l);
     }
     public void modifNom(int id, String nom ) {
         ecrivainDao.modifNom(id, nom );

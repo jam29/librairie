@@ -47,4 +47,8 @@ public class Ecrivain {
         return this.livres;
     }
 
+    public void addLivre(Livre livre) {
+        this.livres.add(livre);
+    }
+
 }

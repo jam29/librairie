@@ -1,6 +1,7 @@
 package org.librairie.controller;
 
 import org.librairie.model.entity.Ecrivain;
+import org.librairie.model.entity.Livre;
 import org.librairie.model.service.EcrivainService;
 import org.librairie.view.EcrivainView;
 
@@ -16,6 +17,10 @@ public class EcrivainController {
     public void create(Ecrivain e) {
         System.out.println(e.getNom());
         ecrivainService.create(e);
+    }
+
+    public void addLivre(int id, Livre l) {
+        ecrivainService.addLivre(id,l);
     }
     public void modifNom(int id, String nouveauNom) {
         ecrivainService.modifNom(id,nouveauNom);

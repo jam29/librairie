@@ -13,6 +13,10 @@ public class Livre {
     @JoinColumn(name = "id_ecrivain")
     private Ecrivain ecrivain; // un seul écrivain par livre.
 
+   public Livre(){}
+    public Livre (String titre) {
+        this.Titre = titre;
+    }
     public int getId() {
         return id;
     }
