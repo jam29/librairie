@@ -13,7 +13,7 @@ public class Ecrivain {
     private String nom;
     private String prenom;
 
-    @OneToMany(mappedBy = "ecrivain") // Ici ecrivain correspond à ecrivain qui est déclaré dans lentité Livre
+    @OneToMany(mappedBy = "ecrivain",cascade = CascadeType.ALL) // Ici ecrivain correspond à ecrivain qui est déclaré dans lentité Livre
     private List<Livre> livres;
 
     public Ecrivain(){}
@@ -49,6 +49,7 @@ public class Ecrivain {
 
     public void addLivre(Livre livre) {
         this.livres.add(livre);
+        livre.setEcrivain(this);
     }
 
 }

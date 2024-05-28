@@ -14,7 +14,7 @@ public class Main {
 //        ec.create(new Ecrivain("Smith","Jacke"));
         // créer la vue pour saisir le Scanner.
         // ec.modifNom(4,"Fondax");
-        Livre l = new Livre("LIVRE3 ZOLA");
+        Livre l = new Livre("LIVRE4-ZOLA");
         ec.addLivre(1,l);
     }
 }

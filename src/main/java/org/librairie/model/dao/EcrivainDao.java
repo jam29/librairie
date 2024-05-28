@@ -40,22 +40,31 @@ public class EcrivainDao {
         }
     }
 
-    public void addLivre(int idecrivain,Livre l) { Session session = null;
+    public void addLivre(int idecr,Livre l) {
+        Session session = null;
         Transaction tr = null;
         Ecrivain e = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             tr = session.beginTransaction();
-            e = session.get(Ecrivain.class,idecrivain);
+            e = session.get(Ecrivain.class,idecr);
+            if (e == null) {
+                throw new IllegalArgumentException("Ecrivain with ID " + idecr + " not found");
+            }
+
             e.addLivre(l);
-            session.persist(e); // passage de l'état Transiant (transitoire) à l'état persist dans la session
-            // session.flush(); // synchronisation de la session avec la BDD.
-            tr.commit(); // le flush déclanche un commit et inversement. laissons hibernate faire avec commit
+
+            for(Livre li:e.getLivres()) {
+                System.out.println("livre:" +li.getTitre());
+            }
+            session.persist(l);
+            //session.flush(); // synchronisation de la session avec la BDD.
+            tr.commit(); // le flush déclenche un commit et inversement. laissons hibernate faire avec commit
         } catch (Exception ex) {
             if (tr != null) {
                 tr.rollback();
             }
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         } finally {
             if (session != null) {
                 session.close();
@@ -72,7 +81,7 @@ public class EcrivainDao {
             tr = session.beginTransaction();
             e = session.get(Ecrivain.class,id);
             e.setNom(nom);
-            session.persist(e); // passage de l'état Transiant (transitoire) à l'état persist dans la session
+            session.persist(e); // passage de l'état Transient (transitoire) à l'état persist dans la session
             // session.flush(); // synchronisation de la session avec la BDD.
             tr.commit(); // le flush déclanche un commit et inversement. laissons hibernate faire avec commit
             System.out.println("Nouveau nom de l'écrivain "+id+" :" + e.getNom());
